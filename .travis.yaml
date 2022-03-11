@@ -5,7 +5,7 @@ node_js:
 services:
   - docker
 
-# Pre-testing installs
+# Pre-testing installs (this is where we could run unit tests)
 install:
   - echo "nothing needs to be installed"
 
@@ -15,7 +15,7 @@ before_script:
 
 script:
   - docker --version # print the version for logging
-  - docker build -t simple-node .
+  - docker build -t simple-node --build-arg NAME=${NAME} .
   - docker tag simple-node YOUR_DOCKER_HUB/simple-node:latest
 
 after_success:
